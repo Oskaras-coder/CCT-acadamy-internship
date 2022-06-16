@@ -38,7 +38,3 @@ Bonus points for providing:
 ## Material
 - https://docs.python.org/3/library/stdtypes.html#str.split
 - https://docs.python.org/3/library/stdtypes.html#str.strip
-
-
-
-# 4. Task
