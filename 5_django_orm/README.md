@@ -1,18 +1,14 @@
 # Task
-Let’s get back to the reservations task:
-review your models.py file. What changes do you think are needed?
-Also, you’ve missed one important part - what if you’re reserving a meeting room, which is already taken? Implement this logic (obviously we’ll need querysets, right?)
-Let’s add the `users` field to the `Reservation` model
-Let’s add an abstract model for all models. What would we put there?
-Also, let’s implement `transaction.atomic`. Be sure to know how does that work
-Use `select_related` and `prefetch_related` at least once
-Create an endpoint to get user-created reservations
-Create an endpoint to get user reservations in which he’s attending
+Let’s get back to the postgresql task and let's implement your created schema in ORM using Django's framework.
 
-# Goals
-- Viewsets (GenericViewSet, ModelViewSet, Mixins, routing)
-- Serializers (Validation, working with ModelSerializer: create, update instance, overriding these methods)
-- Filters
+# Instructions to run the initial application
+- start the database `docker-compose up -d`
+- create the virtual environment
+- install dependencies `pip install requirements.txt`
+- run migrations `python manage.py migrate`
+- create super user `python manage.py createsuperuser`
+- run server `python manage.py runserver` and enter admin site
 
 # Material
-- https://www.django-rest-framework.org
+- https://docs.djangoproject.com/en/4.0/topics/db/queries/
+- https://docs.djangoproject.com/en/4.0/topics/db/models/
