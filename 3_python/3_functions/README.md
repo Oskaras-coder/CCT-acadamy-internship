@@ -1,5 +1,5 @@
 # Task: help ATM to split given amount into banknotes/coins.
-1. write a function, which splits a given amount into banknotes/coins.
+1. write a function, which splits a given amount into the least amount of banknotes/coins.
   The function should receive two parameters:
     `amount` - a number which an ATM user wants to cashout (this value has to be split into banknotes).
     `banknotes` - a list of available banknotes/coins, lets use [1, 2, 5] as a default value for this list.
@@ -18,7 +18,14 @@
   For example,
     if amount is 11.5, available banknotes - [0.5, 1, 10], the returned value should be [10, 1, 0.5].
 
-4. Write unit tests for your function.
+4. Write unit tests for your function. Most primitive way to do it:
+
+```
+def test_split_amount():
+    assert(split_amount(11, [5, 2, 1]) == [5, 5, 1])
+
+test_split_amount()
+```
 
 5. Write a docstring for your function.
 
