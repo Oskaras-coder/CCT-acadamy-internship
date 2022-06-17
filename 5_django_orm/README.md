@@ -5,7 +5,7 @@ Also, you’ve missed one important part - what if you’re reserving a meeting 
 Let’s add the `users` field to the `Reservation` model
 Let’s add an abstract model for all models. What would we put there?
 Also, let’s implement `transaction.atomic`. Be sure to know how does that work
-Use select_related and prefetch_related at least once
+Use `select_related` and `prefetch_related` at least once
 Create an endpoint to get user-created reservations
 Create an endpoint to get user reservations in which he’s attending
 

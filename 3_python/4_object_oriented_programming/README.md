@@ -1,11 +1,10 @@
 # 1. Task: Real estate company
-===============================
 Real estate company sells flats for its customers.
 1. Create an empty `Customer` class.
 2. Add a constructor to a `Customer` class, which would accept:
-    a. customer's email
-    b. optionally customer's name
-    c. tax percent for services with default value of 2
+- 1.1. customer's email
+- 1.2. optionally customer's name
+- 1.3. tax percent for services with default value of 2
 3. Add a method `total_amount()` to `Customer` class. This method has to accept a price of a flat and return total amount including tax for service.
 4. Create three `Customer` instances (also called as objects) with chosen data.
 5. Call `total_amount()` method for one of the instances with flat price of `100000` to test if it works correctly.
@@ -63,4 +62,3 @@ Write classes for work with train, locomotive and wagons. Write a program to dem
 - https://docs.python.org/3/tutorial/classes.html
 - https://www.w3schools.com/python/python_classes.asp
 - https://rszalski.github.io/magicmethods/
-

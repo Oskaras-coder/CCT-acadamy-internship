@@ -1,22 +1,27 @@
-# Task: Basketball game statistics
+# Task: help ATM to split given amount into banknotes/coins.
+1. write a function, which splits a given amount into banknotes/coins.
+  The function should receive two parameters:
+    `amount` - a number which an ATM user wants to cashout (this value has to be split into banknotes).
+    `banknotes` - a list of available banknotes/coins, lets use [1, 2, 5] as a default value for this list.
+  The function should return:
+    a list, consisting of biggest banknotes/coins, which can be used to split the amount.
+    False - if its not possible to split the amount into banknotes.
+  For example,
+    if amount is 13, available banknotes - [1, 2, 5], the returned value should be [5, 5, 2, 1].
 
-Statistics is being recorded during every game. This statistics is used for further games. 
-The total number of players `n` (`n < 13`), who have participated in the games,
-is provided in the first line of data file `input_data.txt`. 
-Six natural numbers are provided in each following row:
-- first number - the number of a player, 
-- next two numbers - how long did the player play (minutes and seconds),
-- following numbers - how many two-points, three-points and free throws did that player score.
+2. update the function (and add new test) to work with any list of banknotes.
+  For example,
+    if amount is 13, available banknotes - [1, 10], the returned value should be [10, 1, 1, 1].
+    if amount is 13, available banknotes - [2, 5], the returned value should be False.
 
-Implement the program, which would provide these statistic measurements:
-- number of a player, which scored the most points. If there are several such players - provide the one with lowest player number.
-- number of a player, who played the least amount of time. If there are several such players - provide the one with the highest player number.
-- number of a player, who scored the most three-points. If there are several such players - provide the one with lowest player number.
-- how many points scored by throwing two-points.
-- how many points scored by free throws.
-- how many points in total scored during the game.
+3. update the function (and add new test) to work with cents, i.e. banknotes/coins can be floating point numbers.
+  For example,
+    if amount is 11.5, available banknotes - [0.5, 1, 10], the returned value should be [10, 1, 0.5].
 
-The output should be written into `output_data.txt` file.
-Implement function for reading/writing data from/to a file.
-Also a function should be used to calculate each statistic.
-Implement unit tests for functions which calculate statistics.
+4. Write unit tests for your function.
+
+5. Write a docstring for your function.
+
+6. Make sure your code works with `amount = 11, banknotes = [5,2]`, solution is `5, 2, 2, 2`.
+
+7. Implement split amount in both recursive and iterative approaches.

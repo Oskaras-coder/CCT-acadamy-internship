@@ -27,7 +27,8 @@ Implement a function `get_max_pair_sum(numbers: list) -> float`, which returns m
 
 # 3. Task: data structure in a dictionary
 Implement a function `find_words_with_repeated_letters(input_filename: str) -> list`, which returns
-a list of words, which have repeated letters.
+a list of words, which have repeated more than once in the text and have duplicate letters
+(e.g. word "letters" have duplicate "e" and "t").
 
 Bonus points for providing:
 - the frequency of those words by implementing:
