@@ -7,6 +7,7 @@ On your initiated repository - implement the branching and merging example provi
 - gitconfig
 - Get familiar with cherry-pick
 - Read about git hooks
+- Merge Requests 
 
 # Material:
 - https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging 
