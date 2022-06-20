@@ -8,6 +8,7 @@ Let’s get back to the postgresql task and let's implement your created schema 
 - run migrations `python manage.py migrate`
 - create super user `python manage.py createsuperuser`
 - run server `python manage.py runserver` and enter admin site
+- you can run interactive shell to play around with your models via `python manage.py shell`
 
 # Material
 - https://docs.djangoproject.com/en/4.0/topics/db/queries/

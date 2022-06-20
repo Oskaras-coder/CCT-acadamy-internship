@@ -1,5 +1,5 @@
 # Task
-On your initiated repository - implement the branching and merging example provided below. Also - keep the commands which you used, we’ll discuss them together.
+On your initiated repository - implement the branching and merging example provided below with one file (making changes to that only file). Also - keep the commands which you used, we’ll discuss them together.
 ![Git task](git.png "Git task")
 
 # Additional karma points:
