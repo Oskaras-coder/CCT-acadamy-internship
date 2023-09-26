@@ -1,53 +1,3 @@
-"""Task 1"""
-
-
-def find_average(list):
-    average_of_the_list = float(round(sum(list) / len(list), 1))
-    return average_of_the_list
-
-
-def find_average_even_index(list2):
-    ranks2 = list2[::2]
-    average_of_even_list_elements = float(round(sum(ranks2) / len(ranks2), 1))
-    return average_of_even_list_elements
-
-
-def find_average_25_75_percentile(list3):
-    list3.sort()
-    ranks3 = ranks[int(len(list3) * 0.25):int(len(list3) * 0.75)]
-    average_25_75_of_the_list = float(round(sum(ranks3) / len(ranks3), 1))
-    return average_25_75_of_the_list
-
-
-ranks = [22, 83, 60, 15, 29, 89, 93, 86, 33, 39, 77, 61, 83, 77, 65, 42, 14, 33, 20, 86,
-         4, 13, 29, 40, 85, 92, 56, 94, 82, 98, 20, 41, 50, 4, 3, 48, 15, 29, 40, 90]
-
-assert find_average(ranks) == 51.0
-assert find_average_even_index(ranks) == 44.0
-assert find_average_25_75_percentile(ranks) == 50.7
-
-"""Task 2"""
-
-
-def create_a_dic(p):
-    new_dic = {
-        "name": p.get("name", "Unknown"),
-        "karma": p.get("karma", "Unknown")
-    }
-    return new_dic
-
-
-p1 = {'name': 'Foo', 'karma': 123, 'value': -1}
-p2 = {'karma': 123, 'value': -1}
-p3 = {'name': 'Foo', 'value': -1}
-
-print(create_a_dic(p1))
-print(create_a_dic(p2))
-print(create_a_dic(p3))
-
-"""Task 3"""
-
-
 with open("input_data.txt") as list_data:
     list_values = list_data.read().splitlines()
     player_number = list_values[0]
@@ -64,7 +14,7 @@ with open("input_data.txt") as list_data:
         highest_score = 0
         most_scored_players_number = None
         for p in data:
-            player_score = score_calculator(data[p]['two_pointers'] * 2, data[p]['three_pointers'] * 3, data[p]["free_throws"])
+            player_score = score_calculator(data[p]['two_pointers'], data[p]['three_pointers'], data[p]["free_throws"])
             if player_score >= highest_score or most_scored_players_number is None and most_scored_players_number > p:
                 most_scored_players_number = p
                 highest_score = player_score
@@ -132,3 +82,10 @@ print(two_points_count(players_attributes))
 print(free_throws_count(players_attributes))
 print(total_count(players_attributes))
 
+with open("output_data.txt", mode="w") as file:
+    file.write(f"Number of a player, which scored the most points - {most_scored_player(players_attributes)}\n"
+               f"Number of a player, who played the least amount of time - {least_amount_played(players_attributes)}\n"
+               f"Number of a player, who scored the most three-points - {most_three_pointers(players_attributes)}\n"
+               f"Points scored by throwing two-points - {two_points_count(players_attributes)}\n"
+               f"Points scored by free throws - {free_throws_count(players_attributes)}\n"
+               f"Points in total scored during the game - {total_count(players_attributes)}\n")

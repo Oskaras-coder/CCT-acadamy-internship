@@ -1,0 +1,6 @@
+Number of a player, which scored the most points - 17
+Number of a player, who played the least amount of time - 23
+Number of a player, who scored the most three-points - 13
+Points scored by throwing two-points - 58
+Points scored by free throws - 22
+Points in total scored during the game - 95
