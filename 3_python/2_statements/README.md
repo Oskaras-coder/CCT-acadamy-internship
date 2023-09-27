@@ -25,10 +25,10 @@ Implement a function `get_max_pair_sum(numbers: list) -> float`, which returns m
 - https://docs.python.org/3/library/functions.html#enumerate
 
 
-# 3. Task: data structure in a dictionary
-Implement a function `find_words_with_repeated_letters(input_filename: str) -> list`, which returns
+# 3.1. Task: data structure in a dictionary
+Implement a function `find_words_with_repeated_letters(input_filename: str) -> list[str]`, which returns
 a list of words, which have repeated more than once in the text and have duplicate letters
-(e.g. word "letters" have duplicate "e" and "t").
+(e.g. word "letters" have duplicate "e" and "t"). Feel free to use text provided in `intput_wrods.txt` file.
 
 Bonus points for providing:
 - the frequency of those words by implementing:
@@ -36,6 +36,21 @@ Bonus points for providing:
 - which letters were repeated in each word and how many times:
 `find_repeated_letters_counts_in_words(input_filename: str) -> dict[str, dict[str, int]]`.
 
+Note: separators such as `,.!?:;` are not letters.
+
 ## Material
 - https://docs.python.org/3/library/stdtypes.html#str.split
 - https://docs.python.org/3/library/stdtypes.html#str.strip
+
+
+# 3.2. Optional:
+Find sentences, which have at least two different words with repeated letters.
+The output should contain this information:
+- full sentence (including separators), which meets the condition stated previously.
+- how many times has this sentence appeared in the text.
+- which words in the sentence has repeated letters, and:
+    - how many times were these words repeated in the sentence.
+    - how many times were these words repeated in the whole text.
+
+# 3.3. Optional:
+Update 3.2. code to ignore text parts which are in the `()` brackets.
