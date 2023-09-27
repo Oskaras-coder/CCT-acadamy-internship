@@ -32,3 +32,7 @@ test_split_amount()
 6. Make sure your code works with `amount = 11, banknotes = [5,2]`, solution is `5, 2, 2, 2`.
 
 7. Implement split amount in both recursive and iterative approaches.
+
+8. We have made an assumption that the ATM had an unlimited amount of banknotes.
+Update both iterative and recursive versions of split amount function to accept how many banknotes of each type are there in the ATM.
+For example, if we try to cash out `amount = 100` and the ATM has `banknotes = {10: 100, 20: 1, 50: 1}`, the result should be `[50, 20, 10, 10, 10]`.
