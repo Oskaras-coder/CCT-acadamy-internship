@@ -2,7 +2,7 @@ import itertools
 from typing import Union, List
 
 
-def test_split_amount() -> bool or None:
+def test_split_amount() -> Union[bool, None]:
     assert split_amount(100, {10: 100, 20: 1, 50: 1}) == [50, 20, 10, 10, 10]
     assert split_amount(13, {1: 10, 2: 1, 5: 5}) == [5, 5, 2, 1]
     assert split_amount(13, {1: 10, 2: 1, 5: 1}) == [5, 2, 1, 1, 1, 1, 1, 1]
@@ -21,8 +21,8 @@ def test_split_amount() -> bool or None:
 
 def recursive_algorithm(amount: Union[int, float], banknotes_values: List[Union[int, float]],
                         banknotes_amount: List[int]):
-    def backtrack(start: Union[int, float], amount: Union[int, float],
-                  current_combination: List[Union[int, float]]) -> list or None:
+    def calculating_best_combination(start: Union[int, float], amount: Union[int, float],
+                                     current_combination: List[Union[int, float]]) -> Union[list, None]:
         if round(amount, 2) == 0:
             is_found = False
             for value in banknotes_values:
@@ -39,29 +39,30 @@ def recursive_algorithm(amount: Union[int, float], banknotes_values: List[Union[
 
         for bill in range(start, len(banknotes_values)):
             current_combination.append(banknotes_values[round(bill, 2)])
-            result = backtrack(bill, amount - banknotes_values[round(bill, 2)], current_combination)
+            result = calculating_best_combination(bill, amount - banknotes_values[round(bill, 2)], current_combination)
             if result:
                 return result
             current_combination.pop()
 
-    return backtrack(0, amount, [])
+    return calculating_best_combination(0, amount, [])
 
 
-def iterative_algorithm(amount: Union[int, float], banknotes_values: list, banknotes_amount: list) -> list or bool:
+def iterative_algorithm(amount: Union[int, float], banknotes_values: list, banknotes_amount: List[Union[int, float]]) \
+        -> Union[list, bool]:
     """Iterative algorithm"""
     is_found = False
     for bill in range(0, int(amount / banknotes_values[-1])):
-        for seq in itertools.combinations_with_replacement(banknotes_values, bill):
-            if round(sum(seq), 2) == amount:
+        for combination in itertools.combinations_with_replacement(banknotes_values, bill):
+            if round(sum(combination), 2) == amount:
                 is_found = False
                 for value in banknotes_values:
-                    if banknotes_amount.count(round(value, 2)) >= seq.count(round(value, 2)):
+                    if banknotes_amount.count(round(value, 2)) >= combination.count(round(value, 2)):
                         is_found = True
                     else:
                         is_found = False
                         break
                 if is_found:
-                    return list(seq)
+                    return list(combination)
     return is_found
 
 
