@@ -1,2 +1,4 @@
-bla bla commit2
+<<<<<<< new_text.txt
+bla bla commit4 (conflict should appear)
 trying to tag
+>>>>>>> 903085edc1452ffa0e53048f3fc924635de5750e
