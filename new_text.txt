@@ -1,1 +1,2 @@
-bla bla commit2
+<<<<<<< new_text.txt
+bla bla commit4 (conflict should appear)
