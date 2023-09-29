@@ -30,6 +30,7 @@ def find_combinations_with_sum(banknotes_values, target_amount) -> list:
     result = []
 
     backtrack(0, target_amount, [])
+    print(result)
     return result
 
 
