@@ -45,7 +45,6 @@ class RealEstateCompany:
         print(f"Total amount paid: {client.total_amount(self.cheapest())}")
         self.flats.remove(flat)
 
-
 customer_1 = Customer("a@b.com", "Darius", 3)
 customer_2 = Customer("c@b.com", "Oskaras")
 customer_3 = Customer("e@b.com")

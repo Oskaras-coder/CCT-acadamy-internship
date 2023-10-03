@@ -1,0 +1,46 @@
+{
+    "trains": [
+        {
+            "train_number": "TRN123",
+            "locomotive": {
+                "mass": 50000,
+                "max_towable_mass": 200000
+            },
+            "wagons": [
+                {
+                    "wagon_number": "WGN001",
+                    "mass": 15000,
+                    "load_mass": 8000,
+                    "max_load_mass": 20000
+                },
+                {
+                    "wagon_number": "WGN002",
+                    "mass": 12000,
+                    "load_mass": 10000,
+                    "max_load_mass": 18000
+                }
+            ]
+        },
+        {
+            "train_number": "TRN456",
+            "locomotive": {
+                "mass": 60000,
+                "max_towable_mass": 250000
+            },
+            "wagons": [
+                {
+                    "wagon_number": "WGN003",
+                    "mass": 20000,
+                    "load_mass": 12000,
+                    "max_load_mass": 22000
+                },
+                {
+                    "wagon_number": "WGN004",
+                    "mass": 18000,
+                    "load_mass": 14000,
+                    "max_load_mass": 21000
+                }
+            ]
+        }
+    ]
+}
