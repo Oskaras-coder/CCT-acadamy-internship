@@ -2,6 +2,7 @@
     "trains": [
         {
             "train_number": "TRN123",
+            "train_current_location": "Vilnius",
             "locomotive": {
                 "mass": 50000,
                 "max_towable_mass": 200000
@@ -9,8 +10,8 @@
             "wagons": [
                 {
                     "wagon_number": "WGN001",
-                    "mass": 15000,
-                    "load_mass": 8000,
+                    "mass": 18000,
+                    "load_mass": 30000,
                     "max_load_mass": 20000
                 },
                 {
@@ -23,6 +24,7 @@
         },
         {
             "train_number": "TRN456",
+            "train_current_location": "Vilnius",
             "locomotive": {
                 "mass": 60000,
                 "max_towable_mass": 250000
