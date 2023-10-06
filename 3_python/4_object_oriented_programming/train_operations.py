@@ -2,6 +2,7 @@ import json
 from locomotive import Locomotive
 from wagon import Wagon
 from train import Train, UntowableTrain
+from exceptions import *
 import pandas
 
 
@@ -91,7 +92,9 @@ for train in train_data["trains"]:
                                 )
         is_train_info_sufficient = check_locomotive(locomotive)
         if not is_train_info_sufficient:
-            print(f"Train {train['train_number']} has insufficient/incorrect data about 'locomotive' to form a train")
+
+            print(f"Train {train['train_number']} has insufficient/incorrect data about 'locomotive' to form a train.")
+
             break
         is_wagon = bool(locomotive)
         if is_wagon:

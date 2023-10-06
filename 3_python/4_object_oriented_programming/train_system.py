@@ -3,7 +3,7 @@ import pandas as pd
 from locomotive import Locomotive
 from wagon import Wagon
 from train import Train, UntowableTrain
-
+from exceptions import *
 
 class TrainStation:
     def __init__(self, train_data_file, operations_file):
@@ -36,8 +36,13 @@ class TrainStation:
                                         max_towable_mass=new_locomotive["max_towable_mass"],
                                         is_wagon=new_locomotive["is_wagon"]
                                         )
-                is_train_info_sufficient = self.check_locomotive(locomotive)
+                try:
+                    is_train_info_sufficient = self.check_locomotive(locomotive)
 
+                except InsufficientData:
+                    print(f"Train {train['train_number']} has insufficient/incorrect data about 'locomotive' to form "
+                          f"a train")
+                    break
                 if not is_train_info_sufficient:
                     print(f"Train {train['train_number']} has insufficient/incorrect data about 'locomotive' to form "
                           f"a train")
@@ -118,6 +123,9 @@ class TrainStation:
         self.sort_trains_by_wagons()
         self.save_trains_to_json()
 
+    def reload_train(self):
+        operations_data = self.load_operations_data()
+
     def load_train_data(self):
         """Load calculated train data"""
         with open(self.train_data_file) as train_data_file:
@@ -153,7 +161,8 @@ class TrainStation:
                 (given_locomotive.is_wagon == 0 or
                  given_locomotive.is_wagon == 1)):
             return True
-
+        else:
+            raise InsufficientData
     @staticmethod
     def add_wagon(overweight: int, wagon: Wagon, wagons: list):
         """Adds a wagon if the mass of the load is too high"""
@@ -184,3 +193,31 @@ class TrainStation:
 if __name__ == "__main__":
     train_station = TrainStation("train_original_data.json", "train_operations.csv")
     train_station.process_train_data()
+
+    # Define the content of your README in Markdown format
+    instructions = """
+    # Train operations
+
+    This program reads and distributes randomly loaded cargo in given trains preparing it to travel to the next train station. 
+    If the train is overloaded, program adds more locomotives (up to 3) and/or wagons. 
+    If locomotives are overloaded, trains cannot move.
+    Locomotives can be counted as wagons if is_wagon in .json file is 1. 
+    Working locomotives has is_wagon = 0. 
+    
+    
+    ## Usage
+    - For the program to work you need a train_original_data.json and train_operations.csv file.
+    - In first file cargo should be loaded 
+    -
+
+    """
+
+    # Specify the file path where you want to save the README.md file
+    readme_file_path = "README.md"
+
+    # Write the README content to the file
+    with open(readme_file_path, "w") as readme_file:
+        readme_file.write(instructions)
+
+    # Optionally, you can print a message indicating that the README file has been created
+    print(f"README file '{readme_file_path}' created successfully.")

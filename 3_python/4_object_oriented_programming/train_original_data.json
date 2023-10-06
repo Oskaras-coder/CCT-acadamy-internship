@@ -6,7 +6,7 @@
             "locomotives": [
                 {
                     "locomotive": "Loco1",
-                "mass": 50000,
+                "mass": 10000,
                 "max_towable_mass": 200000,
                     "is_wagon": 1
             },

@@ -1,0 +1,2 @@
+class InsufficientData(Exception):
+    pass

@@ -61,6 +61,7 @@ class Train:
     def prepare_for_json(self) -> dict:
         return {
             "train_number": self.train_number,
+            "train_current_location": self.current_city,
             "locomotives": [locomotive.prepare_for_json() for locomotive in self.locomotives] + [loco.prepare_for_json()
                                                                                                  for loco in
                                                                                                  self.locomotive_wagons],
@@ -68,7 +69,6 @@ class Train:
             "wagons_weight": self.wagons_weight,
             "added_or_subtracted_wagons": self.added_wagons,
             "amount_of_wagons": len(self.wagons),
-            "current_city": self.current_city,
             "target_destination": self.target_destination
         }
 
