@@ -1,3 +1,3 @@
-train_number,target_destination
-TRN123,kaunas
-TRN456,klaipeda
+train_number,target_destination, new_loaded_mass
+TRN123,Kaunas, 100000
+TRN456,Klaipeda, 150000

@@ -3,32 +3,46 @@
         {
             "train_number": "TRN123",
             "train_current_location": "Vilnius",
-            "locomotive": {
+            "locomotives": [
+                {
+                    "locomotive": "Loco1",
                 "mass": 50000,
-                "max_towable_mass": 200000
+                "max_towable_mass": 200000,
+                    "is_wagon": 1
             },
+                {
+                    "locomotive": "Loco2",
+                "mass": 16,
+                "max_towable_mass": 200000,
+                    "is_wagon": 0
+            }
+            ],
             "wagons": [
                 {
                     "wagon_number": "WGN001",
                     "mass": 18000,
-                    "load_mass": 30000,
-                    "max_load_mass": 20000
+                    "load_mass": 10000,
+                    "max_load_mass": 18000
                 },
                 {
                     "wagon_number": "WGN002",
                     "mass": 12000,
                     "load_mass": 10000,
-                    "max_load_mass": 18000
+                    "max_load_mass": 20000
                 }
             ]
         },
         {
             "train_number": "TRN456",
             "train_current_location": "Vilnius",
-            "locomotive": {
+            "locomotives": [
+                {
+                "locomotive": "Loco_a",
                 "mass": 60000,
-                "max_towable_mass": 250000
-            },
+                "max_towable_mass": 250000,
+                "is_wagon": 0
+            }
+            ],
             "wagons": [
                 {
                     "wagon_number": "WGN003",

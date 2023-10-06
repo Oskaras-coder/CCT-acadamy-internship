@@ -1,3 +1,4 @@
 Locomotive has its own mass
 There can be 0 to inf wagons.
-If total mass of locomotive and combined wagons' mass is higher than towable mass Train cannot move.
+If total mass of locomotive and combined wagons' mass is higher than towable mass Train cannot move and is untowable.
+Train can't have more than 3 locomotives.
