@@ -23,6 +23,8 @@ class TrainStation:
         self.untowable_trains = []
 
     def process_train_data(self):
+        """Constructs the train from given data and sends the train to another place if possible."""
+
         train_data = self.load_train_data()
         operations_data = self.load_operations_data()
 
@@ -41,10 +43,6 @@ class TrainStation:
                     is_train_info_sufficient = self.check_locomotive(locomotive)
 
                 except InsufficientData:
-                    print(f"Train {train['train_number']} has insufficient/incorrect data about 'locomotive' to form "
-                          f"a train")
-                    break
-                if not is_train_info_sufficient:
                     print(f"Train {train['train_number']} has insufficient/incorrect data about 'locomotive' to form "
                           f"a train")
                     break
@@ -124,14 +122,6 @@ class TrainStation:
         self.sort_trains_by_wagons()
         self.save_trains_to_json()
 
-    # def build_new_train_with_given_load(self):
-    #     should_i_build = input("Should I load this train with a load in csv file? Type yes/no")
-    #     if should_i_build.lower() == "yes":
-    #         self.process_train_data()
-    #     else:
-    #         print("The program has closed, ")
-    #         pass
-
     def load_train_data(self):
         """Load calculated train data"""
         with open(self.train_data_file) as train_data_file:
@@ -152,7 +142,7 @@ class TrainStation:
     @staticmethod
     def check_wagon(given_wagon: dict) -> bool:
         """Checking if wagon has sufficient information"""
-        return (
+        if (
                 isinstance(given_wagon.get("mass", 0), int) and
                 isinstance(given_wagon.get("load_mass", 0), int) and
                 isinstance(given_wagon.get("max_load_mass", 0), int) and
@@ -160,7 +150,10 @@ class TrainStation:
                 given_wagon.get("mass", 0) > 0 and
                 given_wagon.get("load_mass", 0) > 0 and
                 given_wagon.get("max_load_mass", 0) > 0
-        )
+        ):
+            return True
+        else:
+            raise InsufficientData
 
     @staticmethod
     def check_locomotive(given_locomotive: Locomotive) -> bool:
@@ -205,7 +198,6 @@ class TrainStation:
 if __name__ == "__main__":
     train_station = TrainStation("train_original_data.json", "train_operations.csv")
     train_station.process_train_data()
-    # train_station.build_new_train_with_given_load()
 
     instructions = """
     # Train operations

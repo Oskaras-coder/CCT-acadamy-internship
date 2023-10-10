@@ -82,22 +82,6 @@ class TestTrainStation(unittest.TestCase):
         self.assertFalse(TrainStation.check_wagon(wagon))
 
 
-class TestAddWagon(unittest.TestCase):
-    def setUp(self):
-        self.sample_wagon = Wagon(mass=100, mass_of_the_load=0, max_mass_of_the_load=50, unique_wagon_number=1)
-        self.sample_wagons = []
-
-    def test_add_wagon_underweight(self):
-        overweight, wagons = TrainStation.add_wagon(30, self.sample_wagon, self.sample_wagons)
-        self.assertEqual(overweight, 0)  # No overweight remaining
-        self.assertEqual(len(wagons), 1)  # One wagon added
-
-    def test_add_wagon_overweight(self):
-        overweight, wagons = TrainStation.add_wagon(80, self.sample_wagon, self.sample_wagons)
-        self.assertEqual(overweight, 30)  # Remaining overweight
-        self.assertEqual(len(wagons), 1)  # One wagon added
-
-
 class TestTrainMassCalculator(unittest.TestCase):
 
     def setUp(self):
@@ -152,7 +136,23 @@ class TestTrainMassCalculator(unittest.TestCase):
         self.assertEqual(train_mass, 0)  # An empty train should have zero mass
 
 
-class TestWagonAddition(unittest.TestCase):
+class TestAddWagon(unittest.TestCase):
+    def setUp(self):
+        self.sample_wagon = Wagon(mass=100, mass_of_the_load=0, max_mass_of_the_load=50, unique_wagon_number=1)
+        self.sample_wagons = []
+
+    def test_add_wagon_underweight(self):
+        overweight, wagons = TrainStation.add_wagon(30, self.sample_wagon, self.sample_wagons)
+        self.assertEqual(overweight, 0)  # No overweight remaining
+        self.assertEqual(len(wagons), 1)  # One wagon added
+
+    def test_add_wagon_overweight(self):
+        overweight, wagons = TrainStation.add_wagon(80, self.sample_wagon, self.sample_wagons)
+        self.assertEqual(overweight, 30)  # Remaining overweight
+        self.assertEqual(len(wagons), 1)  # One wagon added
+
+
+class TestWagonMagicAddition(unittest.TestCase):
     def setUp(self):
         self.wagon1 = Wagon(mass=1000, mass_of_the_load=200, max_mass_of_the_load=1200, unique_wagon_number="W1")
         self.wagon2 = Wagon(mass=800, mass_of_the_load=150, max_mass_of_the_load=1000, unique_wagon_number="W2")
