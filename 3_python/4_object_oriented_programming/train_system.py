@@ -5,6 +5,7 @@ from wagon import Wagon
 from train import Train, UntowableTrain
 from exceptions import *
 
+
 class TrainStation:
     def __init__(self, train_data_file, operations_file):
         self.train_data_file = train_data_file
@@ -123,8 +124,13 @@ class TrainStation:
         self.sort_trains_by_wagons()
         self.save_trains_to_json()
 
-    def reload_train(self):
-        operations_data = self.load_operations_data()
+    # def build_new_train_with_given_load(self):
+    #     should_i_build = input("Should I load this train with a load in csv file? Type yes/no")
+    #     if should_i_build.lower() == "yes":
+    #         self.process_train_data()
+    #     else:
+    #         print("The program has closed, ")
+    #         pass
 
     def load_train_data(self):
         """Load calculated train data"""
@@ -146,23 +152,29 @@ class TrainStation:
     @staticmethod
     def check_wagon(given_wagon: dict) -> bool:
         """Checking if wagon has sufficient information"""
-        if (given_wagon["mass"] > 0 and
-                given_wagon["load_mass"] > 0 and
-                given_wagon["max_load_mass"] > 0 and
-                given_wagon["wagon_number"] is not None):
-            return True
+        return (
+                isinstance(given_wagon.get("mass", 0), int) and
+                isinstance(given_wagon.get("load_mass", 0), int) and
+                isinstance(given_wagon.get("max_load_mass", 0), int) and
+                given_wagon.get("wagon_number") is not None and
+                given_wagon.get("mass", 0) > 0 and
+                given_wagon.get("load_mass", 0) > 0 and
+                given_wagon.get("max_load_mass", 0) > 0
+        )
 
     @staticmethod
     def check_locomotive(given_locomotive: Locomotive) -> bool:
         """Checking if locomotive has sufficient information"""
-        if (type(given_locomotive.locomotive_name) is str and
-                given_locomotive.locomotive_mass > 0 and
-                given_locomotive.max_towable_mass > 0 and
-                (given_locomotive.is_wagon == 0 or
-                 given_locomotive.is_wagon == 1)):
+        if (
+                isinstance(given_locomotive.locomotive_name, str)
+                and given_locomotive.locomotive_mass > 0
+                and given_locomotive.max_towable_mass > 0
+                and given_locomotive.is_wagon in (0, 1)
+        ):
             return True
         else:
             raise InsufficientData
+
     @staticmethod
     def add_wagon(overweight: int, wagon: Wagon, wagons: list):
         """Adds a wagon if the mass of the load is too high"""
@@ -193,31 +205,37 @@ class TrainStation:
 if __name__ == "__main__":
     train_station = TrainStation("train_original_data.json", "train_operations.csv")
     train_station.process_train_data()
+    # train_station.build_new_train_with_given_load()
 
-    # Define the content of your README in Markdown format
     instructions = """
     # Train operations
 
     This program reads and distributes randomly loaded cargo in given trains preparing it to travel to the next train station. 
     If the train is overloaded, program adds more locomotives (up to 3) and/or wagons. 
     If locomotives are overloaded, trains cannot move.
-    Locomotives can be counted as wagons if is_wagon in .json file is 1. 
-    Working locomotives has is_wagon = 0. 
+    Locomotives can be counted as wagons if is_wagon in .json file is 1 (True). 
+    Working locomotives has is_wagon = 0 (False). 
     
     
     ## Usage
-    - For the program to work you need a train_original_data.json and train_operations.csv file.
-    - In first file cargo should be loaded 
-    -
-
+    - For the program to work you will need a train_original_data.json and train_operations.csv file.
+    - In train_original_data.json file cargo should be loaded. The file should have trains information - 
+    Train number, train current location, locomotives, wagons.
+    - train_operations.csv file has a train number and a target destination where this train must travel.
+    
+    
+    ## Functions:
+    - TrainStation class:
+        - process_train_data - uses loaded train data from json and csv file to create a new dictionary of trains.
+        These trains are stored in a new json file. If trains are untowable, they are marked as untowable in a file.
+        - load_train_data and load_operations_data - loads train_original_data.json and reads the data provided by the user.
+        - weight_of_the_structure - calculates the total weight of the train
+        - check_wagon and check_locomotive - checks if the data provided by the user is sufficient/valid to create a train.
+        - add_wagon - Adds a wagon if the mass of the load is too high. Returns overloaded mass and a list of new connected wagons. 
+        - sort_train_by_wagons - Sorts the list of trains by the number of wagons. Returns new train list.
+        - save_train_to_json - creates a new json file.
     """
 
-    # Specify the file path where you want to save the README.md file
     readme_file_path = "README.md"
-
-    # Write the README content to the file
     with open(readme_file_path, "w") as readme_file:
         readme_file.write(instructions)
-
-    # Optionally, you can print a message indicating that the README file has been created
-    print(f"README file '{readme_file_path}' created successfully.")

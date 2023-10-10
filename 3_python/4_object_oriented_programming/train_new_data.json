@@ -1,0 +1,28 @@
+{
+    "trains": [
+        {
+            "train_number": "TRN123",
+            "train_current_location": "Kaunas",
+            "locomotives": [
+                {
+                    "locomotive_name": "LocoA",
+                    "mass": 100,
+                    "max_towable_mass": 200,
+                    "is_wagon": false
+                }
+            ],
+            "wagons": [
+                {
+                    "wagon_number": "Wagon1",
+                    "mass": 50,
+                    "load_mass": 20,
+                    "max_load_mass": 100
+                }
+            ],
+            "wagons_weight": 50,
+            "added_or_subtracted_wagons": 0,
+            "amount_of_wagons": 1,
+            "target_destination": "Kaunas"
+        }
+    ]
+}
