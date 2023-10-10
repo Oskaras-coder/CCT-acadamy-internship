@@ -2,9 +2,9 @@ def get_max_pair_sum(numbers: list) -> float:  # Trying to use both enumerate an
     # solution
     enumerated_numbers_list = enumerate(numbers)
     highest_number = None
-    for number_tuple in enumerated_numbers_list:
+    for index, number in enumerated_numbers_list:
         try:
-            highest_pair = numbers[number_tuple[0]] + number_tuple[number_tuple[0] + 1]
+            highest_pair = numbers[index] + numbers[index + 1]
         except IndexError:
             break
         else:

@@ -2,8 +2,8 @@ import re
 from typing import Dict
 
 
-def find_words_with_repeated_letters(input_filename: str) -> list:
-    global list_of_split_words
+def find_words_with_repeated_letters(input_filename: str) -> (list, list):
+
     separators = r'[,.!?:;\n ]+'
     list_of_split_words = re.split(separators, input_filename)
     enumerated_list_of_split_words = enumerate(list_of_split_words)
@@ -21,11 +21,11 @@ def find_words_with_repeated_letters(input_filename: str) -> list:
                         break
                 if is_duplicate:
                     break
-    return duplicated_words
+    return duplicated_words, list_of_split_words
 
 
 def find_counts_of_words_with_repeated_letters(input_filename: str) -> dict[str, int]:
-    word_with_repeated_letters = find_words_with_repeated_letters(input_filename)
+    word_with_repeated_letters, list_of_split_words = find_words_with_repeated_letters(input_filename)
     dictionary_of_repeated_words = {word: list_of_split_words.count(word) for word in word_with_repeated_letters}
     return dictionary_of_repeated_words
 
@@ -40,6 +40,7 @@ def find_repeated_letters_counts_in_words(input_filename: str) -> dict[str, int]
 with open("input_words.txt") as filename:
     text = filename.read().lower()
 
-print(find_words_with_repeated_letters(text))
+duplicated_words, split_words = find_words_with_repeated_letters(text)
+print(duplicated_words)
 print(find_counts_of_words_with_repeated_letters(text))
 print(find_repeated_letters_counts_in_words(text))
