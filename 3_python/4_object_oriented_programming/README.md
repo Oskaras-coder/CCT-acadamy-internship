@@ -1,11 +1,11 @@
 
-    # Train Operations
+# Train Operations
 
 This program reads and distributes randomly loaded cargo to given trains, preparing them for travel to the next train station. If a train is overloaded, the program adds more locomotives (up to 3) and/or wagons. If locomotives are overloaded, trains cannot move. Locomotives can be counted as wagons if the `is_wagon` attribute in the .json file is set to 1 (True). Working locomotives have `is_wagon = 0` (False).
 
 ## Usage
 
-To use this program, you will need the following files:
+To use `train_system.py` program, you will need the following files:
 - `train_original_data.json`: This file should contain information about the loaded cargo, including train details such as train number, current location, locomotives, and wagons.
 - `train_operations.csv`: This file should include a train number and the target destination to which the train must travel.
 
