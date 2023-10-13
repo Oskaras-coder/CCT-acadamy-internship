@@ -2,8 +2,17 @@ INSERT INTO "user" (first_name, last_name, phone, password, email, cart_id, addr
   ('Alice', 'Johnson', '555-1111', 'password123', 'alice.johnson@example.com', 9, 15),
   ('Bob', 'Smith', '555-2222', 'password456', 'bob.smith@example.com', 10, 16),
   ('Charlie', 'Brown', '555-3333', 'password789', 'charlie.brown@example.com', 11, 17),
-  ('David', 'Wilson', '555-4444', 'passwordabc', 'david.wilson@example.com', 12, 18);
+  ('David', 'Wilson', '555-4444', 'passwordabc', 'david.wilson@example.com', 12, 18),
+  ('Oskaras', 'Safinas', '9192-2133', 'hehehe', 'os@example.com', 13, 18);
 
+INSERT INTO "address" (street, city, country, zip) VALUES
+("123 Main St", "Exampleville", "Exampleland",12345),
+("456 Elm St", "Sampletown", "Sampleland",67890),
+("789 Oak St", "Testville", "Testland", 10111),
+("101 Pine St", "Demo City", "Demoland", 54321),
+('456 Elm St', 'Vilnius', 'Lithuania', 13841);
+
+INSERT INTO "cart" DEFAULT VALUES;
 INSERT INTO "cart" DEFAULT VALUES;
 INSERT INTO "cart" DEFAULT VALUES;
 INSERT INTO "cart" DEFAULT VALUES;

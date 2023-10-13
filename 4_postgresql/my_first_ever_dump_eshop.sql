@@ -442,6 +442,7 @@ COPY public.address (address_id, street, city, country, zip, created_at, updated
 16	456 Elm St	Sampletown	Sampleland	67890	2023-10-12 11:33:47.773623+00	2023-10-12 11:33:47.773623+00
 17	789 Oak St	Testville	Testland	10111	2023-10-12 11:33:47.773623+00	2023-10-12 11:33:47.773623+00
 18	101 Pine St	Demo City	Demoland	54321	2023-10-12 11:33:47.773623+00	2023-10-12 11:33:47.773623+00
+19	456 Elm St	Vilnius	Lithuania	13841	2023-10-13 11:55:26.500467+00	2023-10-13 11:55:26.500467+00
 \.
 
 
@@ -454,6 +455,7 @@ COPY public.cart (cart_id, created_at, updated_at) FROM stdin;
 10	2023-10-12 11:34:00.926572+00	2023-10-12 11:34:00.926572+00
 11	2023-10-12 11:34:00.926572+00	2023-10-12 11:34:00.926572+00
 12	2023-10-12 11:34:00.926572+00	2023-10-12 11:34:00.926572+00
+13	2023-10-13 11:53:07.468546+00	2023-10-13 11:53:07.468546+00
 \.
 
 
@@ -560,10 +562,10 @@ COPY public.order_product (product_price, quantity, product_id, order_id) FROM s
 --
 
 COPY public.product (product_id, price, name, quantity, created_at, updated_at, category_id, product_image_id) FROM stdin;
-1	19.99	Product 1	100	2023-10-12 11:47:45.157348+00	2023-10-12 11:47:45.157348+00	1	99eead52-3deb-4c38-90e6-4b35d0211bca
-2	29.99	Product 2	50	2023-10-12 11:47:45.157348+00	2023-10-12 11:47:45.157348+00	2	a9b03524-eeac-464e-9389-744d37abdce1
-3	39.99	Product 3	70	2023-10-12 11:47:45.157348+00	2023-10-12 11:47:45.157348+00	3	ad2712dc-9df9-4970-b9da-a493afc7314b
-4	49.99	Product 4	30	2023-10-12 11:47:45.157348+00	2023-10-12 11:47:45.157348+00	4	99eead52-3deb-4c38-90e6-4b35d0211bca
+1	19.99	Cup	100	2023-10-12 11:47:45.157348+00	2023-10-12 11:47:45.157348+00	1	99eead52-3deb-4c38-90e6-4b35d0211bca
+2	39.99	Fork	50	2023-10-12 11:47:45.157348+00	2023-10-12 11:47:45.157348+00	2	a9b03524-eeac-464e-9389-744d37abdce1
+3	59.99	Spoon	70	2023-10-12 11:47:45.157348+00	2023-10-12 11:47:45.157348+00	3	ad2712dc-9df9-4970-b9da-a493afc7314b
+4	79.99	Plate	30	2023-10-12 11:47:45.157348+00	2023-10-12 11:47:45.157348+00	4	99eead52-3deb-4c38-90e6-4b35d0211bca
 \.
 
 
@@ -587,6 +589,7 @@ COPY public."user" (id, first_name, last_name, phone, password, email, created_a
 870a50c7-ba3b-40e5-86c7-bb0c300f7a80	Bob	Smith	555-2222	password456	bob.smith@example.com	2023-10-12 11:36:04.400244+00	2023-10-12 11:36:04.400244+00	10	16
 c577f1f1-cb30-4a75-9bb0-d700a0c97208	Charlie	Brown	555-3333	password789	charlie.brown@example.com	2023-10-12 11:36:04.400244+00	2023-10-12 11:36:04.400244+00	11	17
 c775ca4e-6a72-4153-8f9f-2fd5d0a0f90b	David	Wilson	555-4444	passwordabc	david.wilson@example.com	2023-10-12 11:36:04.400244+00	2023-10-12 11:36:04.400244+00	12	18
+975795e8-3edb-4fda-a292-10769c97b092	Oskaras	Safinas	9192-2133	hehehe	os@example.com	2023-10-13 11:55:49.105791+00	2023-10-13 11:55:49.105791+00	13	19
 \.
 
 
@@ -594,14 +597,14 @@ c775ca4e-6a72-4153-8f9f-2fd5d0a0f90b	David	Wilson	555-4444	passwordabc	david.wil
 -- Name: address_address_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.address_address_id_seq', 18, true);
+SELECT pg_catalog.setval('public.address_address_id_seq', 19, true);
 
 
 --
 -- Name: cart_cart_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.cart_cart_id_seq', 12, true);
+SELECT pg_catalog.setval('public.cart_cart_id_seq', 13, true);
 
 
 --
