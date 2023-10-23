@@ -56,11 +56,26 @@ class OrderSerializer(serializers.ModelSerializer):
         user = validated_data["user_id"]
         cart_id = Cart.objects.filter(user=user.id).first()
 
+
         cart_products = Cart_Product.objects.filter(cart_id=cart_id)
         total_price = sum(cart_item.product_id.price * cart_item.quantity for cart_item in cart_products)
 
         validated_data["total_price"] = total_price
         order = Order.objects.create(**validated_data)
+
+        order_products = [
+            Order_Product(
+                order_id=order,
+                product_id=item.product_id,
+                product_price=item.product_id.price,
+                quantity=item.quantity,
+            )
+            for item in cart_products
+        ]
+
+        Order_Product.objects.bulk_create(order_products)
+
+        # cart.delete()
 
         return order
 
