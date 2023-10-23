@@ -56,7 +56,6 @@ class OrderSerializer(serializers.ModelSerializer):
         user = validated_data["user_id"]
         cart_id = Cart.objects.filter(user=user.id).first()
 
-
         cart_products = Cart_Product.objects.filter(cart_id=cart_id)
         total_price = sum(cart_item.product_id.price * cart_item.quantity for cart_item in cart_products)
 
@@ -91,12 +90,13 @@ class AddToCartSerializer(serializers.ModelSerializer):
     quantity = serializers.IntegerField()
 
     def create(self, validated_data):
-        cart_id = int(self.context["cart_id"])
-        product_id = int(self.validated_data.get("product_id"))
+        cart_id = self.context["cart_id"]
+        product_id = self.validated_data.get("product_id")
         quantity = self.validated_data.get("quantity")
 
-        cart = Cart.objects.get(pk=cart_id)
         product = Product.objects.get(pk=product_id)
+
+        cart = Cart.objects.get(pk=cart_id)
 
         cart_item = Cart_Product.objects.create(cart_id=cart, quantity=quantity, product_id=product)
         cart_item.save()
