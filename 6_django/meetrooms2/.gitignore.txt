@@ -1,0 +1,11 @@
+# Ignore specific files
+../4_postgresql/docker-compose.yml
+../4_postgresql/servers.json
+
+
+# Ignore specific directories
+meetrooms_env/
+../2_git_basics/
+../3_python/
+../5_django_orm/
+../s
